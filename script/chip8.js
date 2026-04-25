@@ -12,7 +12,7 @@ class Chip8 {
         this.memory = new Memory(this);
         this.fileSize = 0;
         this.opcode = new Uint16Array(1).fill(0);
-        this.sound = new Audio("/sound/digi-beep-qst-346094.mp3");
+        this.sound = new Audio("./sound/digi-beep-qst-346094.mp3");
         this.cpu = new Cpu(this);
         this.pause = false;
         this.debugMode = obj.debugMode || false;
@@ -120,7 +120,6 @@ class Chip8 {
             this.rwdActive();
     }
 }
-
 
 
 

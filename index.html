@@ -51,10 +51,10 @@
                     <p>遊戲ROM</p>
                     <label class="controlBoard_edit">
                         <select id="roms">
-                            <option value="/game/INVADERS" selected>太空入侵者</option>
-                            <option value="/game/PONG">乒乓</option>
-                            <option value="/game/UFO">外星飛船</option>
-                            <option value="/game/BRIX">打磚塊</option>
+                            <option value="./game/INVADERS" selected>太空入侵者</option>
+                            <option value="./game/PONG">乒乓</option>
+                            <option value="./game/UFO">外星飛船</option>
+                            <option value="./game/BRIX">打磚塊</option>
                         </select>
                     </label>
                 </li>
@@ -300,7 +300,7 @@
         try {
             var chip8 = new Chip8({
                 canvas: canvas,
-                file: "/game/INVADERS",//PONG,INVADERS,BRIX,UFO
+                file: "./game/INVADERS",//PONG,INVADERS,BRIX,UFO
                 fps: 60,
                 scale: 10,
                 rwd: true,
