@@ -120,7 +120,3 @@ class Chip8 {
             this.rwdActive();
     }
 }
-
-
-
-

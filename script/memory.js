@@ -27,10 +27,6 @@ class Memory {
         xhr.open("GET", file, true);
         xhr.responseType = "arraybuffer";
         xhr.onload = (e) => {
-            if (xhr.status < 200 || xhr.status >= 300) {
-                console.error(`ROM載入失敗：${xhr.status} ${file}`);
-                return;
-            }
             const view = new Uint8Array(xhr.response);
             this.fileSize = xhr.response.byteLength;
             if (this.fileSize + 0x200 > 4096) {
@@ -48,4 +44,3 @@ class Memory {
         xhr.send();
     };
 }
-
