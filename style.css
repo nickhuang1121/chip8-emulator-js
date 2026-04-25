@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, #FA5C5C, #FEC288);
+}
+
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 640px;
+}
+
+.base,
+.thanksBoard,
+#allOpcodeView {
+    display: block;
+    width: 100%;
+}
+
+.canvas {
+    width: 100%;
+    height: auto;
+}
+
+.controlBoard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    list-style: none;
+}
+
+.controlBoard li {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.controlBoard li.register,
+.controlBoard li.mobileKeyboard {
+    grid-column: span 2;
+}
+
+.controlBoard li.mobileKeyboard {
+    display: none;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.controlBoard li.mobileKeyboard button {
+    padding: 10px 0;
+
+}
+
+.controlBoard li.btnList3 {
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+.controlBoard li.btnList2 {
+    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+button {
+    padding: 5px 0;
+    font-size: 18px;
+}
+
+.controlBoard li p {
+    display: inline-flex;
+    align-items: center;
+}
+
+
+.controlBoard li label {
+    align-self: center;
+    font-size: 24px;
+    color: #fff;
+}
+
+.controlBoard li label>* {
+    width: 100%;
+    font-size: 24px;
+}
+
+
+#allOpcodeView {
+    margin: 20px 0;
+    height: 200px;
+}
+
+#allOpcodeView.close {
+    display: none;
+}
+
+
+.register_inner {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+}
+
+.register_inner>* {
+    padding: 2px;
+    border: 1px solid #fff;
+}
+
+.register_inner>* p {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+}
+
+.btn.close {
+    display: none;
+}
+
+.thanksBoard {
+    padding: 15px;
+    border-radius: 20px;
+    background: white;
+}
+
+.thanksBoard h2 {
+    font-size: 20px;
+    letter-spacing: 1px;
+
+}
+
+.thanksBoard p {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 640px) {
+    .controlBoard li.mobileKeyboard {
+        display: grid;
+    }
+}

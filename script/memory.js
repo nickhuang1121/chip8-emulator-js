@@ -1,0 +1,48 @@
+class Memory {
+    constructor(chip8) {
+        this.chip8 = chip8;
+        this.fileSize = 0;
+        this.bytes = new Uint8Array(4096);
+        this.fontset = [
+            0xf0, 0x90, 0x90, 0x90, 0xf0, //0
+            0x20, 0x60, 0x20, 0x20, 0x70, //1
+            0xf0, 0x10, 0xf0, 0x80, 0xf0, //2
+            0xf0, 0x10, 0xf0, 0x10, 0xf0, //3
+            0x90, 0x90, 0xf0, 0x10, 0x10, //4
+            0xf0, 0x80, 0xf0, 0x10, 0xf0, //5
+            0xf0, 0x80, 0xf0, 0x90, 0xf0, //6
+            0xf0, 0x10, 0x20, 0x40, 0x40, //7
+            0xf0, 0x90, 0xf0, 0x90, 0xf0, //8
+            0xf0, 0x90, 0xf0, 0x10, 0xf0, //9
+            0xf0, 0x90, 0xf0, 0x90, 0x90, //A
+            0xe0, 0x90, 0xe0, 0x90, 0xe0, //B
+            0xf0, 0x80, 0x80, 0x80, 0xf0, //C
+            0xe0, 0x90, 0x90, 0x90, 0xe0, //D
+            0xf0, 0x80, 0xf0, 0x80, 0xf0, //E
+            0xf0, 0x80, 0xf0, 0x80, 0x80 //F
+        ];
+    }
+    loadROM(file) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", file, true);
+        xhr.responseType = "arraybuffer";
+        xhr.onload = (e) => {
+            const view = new Uint8Array(xhr.response);
+            this.fileSize = xhr.response.byteLength;
+            if (this.fileSize + 0x200 > 4096) {
+                console.error("ROM檔案過大");
+                return;
+            }
+            for (let i = 0; i < this.fileSize; i++) {
+                this.bytes[0x200 + i] = view[i];
+            }
+            for (let i = 0; i < 80; i++) {
+                this.bytes[i] = this.fontset[i];
+            }
+            this.chip8.gameLoop();
+        };
+        xhr.send();
+    };
+}
+
+
