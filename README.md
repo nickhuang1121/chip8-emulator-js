@@ -2,6 +2,7 @@
 
 這是一個使用原生 HTML、CSS、JavaScript 製作的 CHIP-8 模擬器。專案透過 Canvas 呈現 64×32 像素畫面，並實作 CPU、記憶體、顯示器、鍵盤輸入與音效等核心功能，可載入多款經典 CHIP-8 ROM 遊戲。
 
+## DEMO：https://nickhuang1121.github.io/chip8-emulator-js/
 ## 功能特色
 
 - 支援 CHIP-8 ROM 載入與執行
