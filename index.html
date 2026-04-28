@@ -58,6 +58,10 @@
                         </select>
                     </label>
                 </li>
+                <li class="gameControls">
+                    <p>操作按鍵</p>
+                    <div id="gameControls" class="gameControls_inner" aria-live="polite"></div>
+                </li>
                 <li class="btnList3">
 
                     <button onclick="pauseClick()">暫停</button>
@@ -334,7 +338,53 @@
             chip8.continueClick();
         }
 
+        const romControls = {
+            "./game/INVADERS": [
+                { action: "左移", keyboardKey: "Q" },
+                { action: "射擊", keyboardKey: "W" },
+                { action: "右移", keyboardKey: "E" },
+            ],
+            "./game/PONG": [
+                { action: "左方上移", keyboardKey: "1" },
+                { action: "左方下移", keyboardKey: "Q" },
+                { action: "右方上移", keyboardKey: "4" },
+                { action: "右方下移", keyboardKey: "R" },
+            ],
+            "./game/UFO": [
+                { action: "向左射擊", keyboardKey: "Q" },
+                { action: "向上射擊", keyboardKey: "W" },
+                { action: "向右射擊", keyboardKey: "E" },
+            ],
+            "./game/BRIX": [
+                { action: "左移", keyboardKey: "Q" },
+                { action: "右移", keyboardKey: "E" },
+            ],
+        };
+
+        const gameControlsView = document.querySelector("#gameControls");
+        function renderGameControls(rom) {
+            gameControlsView.replaceChildren();
+
+            const controls = romControls[rom] || [];
+            controls.forEach((control) => {
+                const item = document.createElement("div");
+                const action = document.createElement("span");
+                const key = document.createElement("span");
+
+                item.className = "gameControls_item";
+                action.className = "gameControls_action";
+                key.className = "gameControls_key";
+
+                action.textContent = control.action;
+                key.textContent = control.keyboardKey;
+
+                item.append(action, key);
+                gameControlsView.append(item);
+            });
+        }
+
         const romSelect = document.querySelector("#roms");
+        renderGameControls(romSelect.value);
         romSelect.addEventListener("change", function (e) {
             clearTimeout(chip8.timer);
 
@@ -350,6 +400,7 @@
             chip8.cpu.registers.soundTimer.fill(0);
 
             chip8.file = e.target.value;
+            renderGameControls(chip8.file);
             chip8.init();
         })
 

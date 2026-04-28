@@ -54,7 +54,8 @@ body {
 }
 
 .controlBoard li.register,
-.controlBoard li.mobileKeyboard {
+.controlBoard li.mobileKeyboard,
+.controlBoard li.gameControls {
     grid-column: span 2;
 }
 
@@ -79,6 +80,41 @@ body {
     gap: 5px;
     grid-template-columns: repeat(2, 1fr);
 
+}
+
+.gameControls_inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+}
+
+.gameControls_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.gameControls_action,
+.gameControls_key {
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.gameControls_key {
+    flex: 0 0 auto;
+    min-width: 54px;
+    padding: 3px 6px;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
 }
 
 button {
